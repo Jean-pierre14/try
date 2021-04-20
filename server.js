@@ -5,13 +5,16 @@ const exp = require('express'),
     app = exp(),
     PORT = process.env.PORT || 7000
 
+
 app.use(cors())
 app.use(exp.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.set('view engine', 'ejs')
+
 
 app.get('/', (req, res) => {
-    res.json("Welcome")
+    res.render('index')
 })
 app.listen(PORT, (err) => {
     if (err) error({ message: `Error ${err}`, badge: true })
