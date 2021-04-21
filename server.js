@@ -11,10 +11,10 @@ app.use(exp.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
-
+const title = 'Grace'
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', { title })
 })
 app.listen(PORT, (err) => {
     if (err) error({ message: `Error ${err}`, badge: true })
