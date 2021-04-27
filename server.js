@@ -1,11 +1,14 @@
 const exp = require('express'),
     cors = require('cors'),
+    dotenv = require('dotenv'),
     bodyParser = require('body-parser'),
     { success, error } = require('consola'),
-    app = exp(),
-    PORT = process.env.PORT || 7000
+    app = exp()
 
+dotenv.config({ path: 'config.env' })
+const PORT = process.env.PORT || 5000
 
+// Cors
 app.use(cors())
 app.use(exp.json())
 app.use(bodyParser.urlencoded({ extended: true }))
