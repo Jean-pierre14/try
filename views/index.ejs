@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid p-0">
         <div class="container">
-            <div class="alert alert-success">
+            <div class="mt-2 alert alert-success">
                 <h2 class="text-center">Crud using nodejs and express with mongodb</h2>
             </div>
             <div class="row">
@@ -54,7 +54,7 @@
                 <div class="col-md-8">
                     <div class="alert alert-danger">
                         <form action="" method="get" class="inline-group">
-                            <input type="search" name="search" id="search" placeholder="Search..."
+                            <input type="search" name="search" spellcheck="false" id="search" placeholder="Search..."
                                 class="my-2 form-control">
                         </form>
                     </div>
@@ -76,8 +76,20 @@
                                 <td>.1234</td>
                                 <td>
                                     <div class="btn-group btn-sm-responsive">
-                                        <a href="/edit/?id" class="btn btn-sm btn-info">edit</a>
-                                        <a href="/edit/?id" class="btn btn-sm btn-danger">delete</a>
+                                        <a href="/edit/:id" class="btn btn-sm btn-info">edit</a>
+                                        <a href="/edit/:id" class="btn btn-sm btn-danger">delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ghost&é</td>
+                                <td> sniper</td>
+                                <td>ghostart@gmail.com</td>
+                                <td>.1234</td>
+                                <td>
+                                    <div class="btn-group btn-sm-responsive">
+                                        <a href="/edit/:id" class="btn btn-sm btn-info">edit</a>
+                                        <a href="/edit/:id" class="btn btn-sm btn-danger">delete</a>
                                     </div>
                                 </td>
                             </tr>
