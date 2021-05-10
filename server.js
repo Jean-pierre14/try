@@ -14,11 +14,16 @@ app.use(exp.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
-const title = 'Grace'
+let title = 'Grace'
 
 app.get('/', (req, res) => {
     res.render('index', { title })
 })
+app.get('/edit', (req, res) => {
+    title = 'Edit'
+    res.render('edit', { title })
+})
+
 app.listen(PORT, (err) => {
     if (err) error({ message: `Error ${err}`, badge: true })
     success({ message: `Server run on port ${PORT}`, badge: true })
