@@ -7,7 +7,7 @@ const exp = require('express'),
 
 dotenv.config({ path: 'config.env' })
 const PORT = process.env.PORT || 5000
-const db = process.env.DB
+// const db = process.env.DB
 
 
 // Cors
