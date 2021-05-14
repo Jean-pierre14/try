@@ -1,5 +1,6 @@
 const exp = require('express'),
     cors = require('cors'),
+    mongoose = require('mongoose'),
     dotenv = require('dotenv'),
     bodyParser = require('body-parser'),
     { success, error } = require('consola'),
@@ -7,7 +8,12 @@ const exp = require('express'),
 
 dotenv.config({ path: 'config.env' })
 const PORT = process.env.PORT || 5000
-// const db = process.env.DB
+const key = process.env.DB
+const db = require('./models/key').MongoURI
+// Database connection
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => { success({ message: `Connected to the database mongodb`, badge: true }) })
+    .catch(err => { console.log(err) })
 
 
 // Cors
