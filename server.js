@@ -15,7 +15,6 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => { success({ message: `Connected to the database mongodb`, badge: true }) })
     .catch(err => { console.log(err) })
 
-
 // Cors
 app.use(cors())
 app.use(exp.json())
