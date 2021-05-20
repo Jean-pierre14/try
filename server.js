@@ -31,6 +31,13 @@ app.get('/edit', (req, res) => {
     res.render('edit', { title })
 })
 
+// Add user
+app.post('/add', (req, res) => {
+    const { username, fullname, email, password } = req.body
+
+    if (username === undefined || username === '') { errors.push({ message: "Username is required" }) }
+})
+
 app.listen(PORT, (err) => {
     if (err) error({ message: `Error ${err}`, badge: true })
     success({ message: `Server run on port ${PORT}`, badge: true })
