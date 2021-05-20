@@ -36,6 +36,11 @@ app.post('/add', (req, res) => {
     const { username, fullname, email, password } = req.body
 
     if (username === undefined || username === '') { errors.push({ message: "Username is required" }) }
+    if (errors.length === 0) {
+        res.json("Pass")
+    } else {
+        res.json("Wrong")
+    }
 })
 
 app.listen(PORT, (err) => {
