@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    name: {
+    fullname: {
         type: String,
         required: true
     },
@@ -13,33 +13,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    address: {
-        type: String,
-        required: true
-    },
-    phone: {
-        type: String,
-        required: true
-    },
-    gender: {
-        type: String,
-        required: true
-    },
-    date_of_birth: {
-        type: Date,
-        required: true
-    },
     password: {
         type: String,
         required: true
-    },
-    cpassword: {
-        type: String,
-        required: false
-    },
-    user_level: {
-        type: String,
-        default: 0
     },
     created_at: {
         type: Date,
