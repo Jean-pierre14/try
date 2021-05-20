@@ -89,8 +89,24 @@
                     </div>
                 </div>
             </div>
+            <div id="result"></div>
         </div>
     </div>
     </body>
+    <script>
+        let output = ''
+        fetch('http://localhost:7000/users')
+            .then(res => res.json().then((data) => {
+                if (data.length > 0) {
+                    foreach((user) => {
+                        output += `<p class="alert alert-success">${user.username}</p>`
+                    })
+                } else {
+                    output = "<p class='alert alert-danger'>There is no data registered</p>"
+                }
+                document.getElementById('result').innerHTML = output
+            }))
+            .catch(err => console.log(err))
+    </script>
 
     </html>

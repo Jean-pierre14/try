@@ -22,9 +22,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
 let title = 'Grace'
+const User = require('./models/User')
 
 app.get('/', (req, res) => {
     res.render('index', { title })
+})
+app.get('/users', (req, res) => {
+    User.find({}, (err, cb) => {
+        if (err) throw err
+        res.json(cb)
+    })
 })
 app.get('/edit', (req, res) => {
     title = 'Edit'
