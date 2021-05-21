@@ -89,7 +89,11 @@
                     </div>
                 </div>
             </div>
-            <div id="result" class="container-fluid"></div>
+            <div class="container-fluid p-0">
+                <div>
+                    <div class="row my-2" id="result"></div>
+                </div>
+            </div>
         </div>
     </div>
     </body>
@@ -101,8 +105,7 @@
                 if (data.length > 0) {
                     data.forEach((user) => {
                         output += `
-                        <div class="row">
-                        <div class="col-md-4 m-1">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     ${user.username}
@@ -111,7 +114,6 @@
                                     <p><b>Email: </b> ${user.email}</p>
                                 </div>
                                 </div>
-                            </div>
                             </div>
                             `
                     })
