@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div id="result"></div>
+            <div id="result" class="container-fluid"></div>
         </div>
     </div>
     </body>
@@ -100,7 +100,20 @@
             .then(res => res.json().then((data) => {
                 if (data.length > 0) {
                     data.forEach((user) => {
-                        output += `<p class="alert alert-success">${user.username}</p>`
+                        output += `
+                        <div class="row">
+                        <div class="col-md-4 m-1">
+                            <div class="card">
+                                <div class="card-header">
+                                    ${user.username}
+                                </div>
+                                <div class="card-body">
+                                    <p><b>Email: </b> ${user.email}</p>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            `
                     })
                 } else {
                     output = "<p class='alert alert-danger'>There is no data registered</p>"
