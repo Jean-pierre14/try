@@ -94,11 +94,12 @@
     </div>
     </body>
     <script>
+
         let output = ''
         fetch('http://localhost:7000/users')
             .then(res => res.json().then((data) => {
                 if (data.length > 0) {
-                    foreach((user) => {
+                    data.forEach((user) => {
                         output += `<p class="alert alert-success">${user.username}</p>`
                     })
                 } else {
