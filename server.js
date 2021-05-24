@@ -22,13 +22,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
 let title = 'Grace'
-const User = require('./models/User')
+const errors = []
+const Student = require('./models/Students')
 
 app.get('/', (req, res) => {
     res.render('index', { title })
 })
 app.get('/users', (req, res) => {
-    User.find({}, (err, cb) => {
+    Student.find({}, (err, cb) => {
         if (err) throw err
         res.json(cb)
     })
@@ -44,7 +45,14 @@ app.post('/add', (req, res) => {
 
     if (username === undefined || username === '') { errors.push({ message: "Username is required" }) }
     if (errors.length === 0) {
-        res.json("Pass")
+        const NewStudent = new Student({
+            username, fullname, email, password
+        })
+        NewStudent.save()
+            .then(student => {
+                res.redirect('/')
+            })
+            .catch(err => console.log(err))
     } else {
         res.json("Wrong")
     }
