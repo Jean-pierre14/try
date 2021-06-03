@@ -20,9 +20,23 @@ main{
     width: 80%;
     background-color: #456;
 }
-
+.button{
+    border: none;
+    padding: 10px 5px;
+    border-radius: 4px;
+    outline: none;
+    color: #111;
+    cursor: pointer;
+}
+.coral{
+    background-color: coral;
+}
+.red{
+    background-color: rgb(255, 122, 122);
+}
 .content{
     position: absolute;
+    display: none;
     top: 0;
     left: 0;
     background-color: #456;
