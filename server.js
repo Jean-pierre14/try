@@ -7,7 +7,7 @@ const exp = require('express'),
     app = exp()
 
 dotenv.config({ path: 'config.env' })
-const PORT = process.env.PORT || 5000
+const PORT = 5000 || process.env.PORT
 const key = process.env.DB
 const db = require('./models/key').MongoURI
 // Database connection
