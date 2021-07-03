@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+
+<body>
+    <h3>Fetch API</h3>
+    <div id="results"></div>
+</body>
+<script>
+    getFile("demo.txt")
+    async function getFile(file) {
+        let O = await fetch(file)
+        let Text = await O.text()
+        document.getElementById('results').innerHTML = Text
+    }
+
+</script>
+
+</html>
