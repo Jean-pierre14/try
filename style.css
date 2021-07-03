@@ -10,14 +10,21 @@ body{
     /* grid-template-columns: 1fr 3fr; */
 }
 
+
 aside{
-    width: 250px;
+    position: relative;
+    clear:both;
+    width: 20%;
     height: 100%;
     background-color: #eec;
 }
 main{
-    position: relative;
-    width: 80%;
+    
+    /* position: absolute; */
+    right: 0;
+    top: 0;
+    float: right;
+    clear: both;
     background-color: #456;
 }
 .button{

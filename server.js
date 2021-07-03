@@ -7,11 +7,11 @@ const exp = require('express'),
     app = exp()
 
 dotenv.config({ path: 'config.env' })
-const PORT = 5000 || process.env.PORT
-const key = process.env.DB
-const db = require('./models/key').MongoURI
+const PORT = process.env.PORT || 5000
+const DB = process.env.DB
+// const db = require('./models/key').MongoURI
 // Database connection
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => { success({ message: `Connected to the database mongodb`, badge: true }) })
     .catch(err => { console.log(err) })
 
