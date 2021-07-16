@@ -34,7 +34,10 @@ app.get('/users', (req, res) => {
         res.json(cb)
     })
 })
-app.get('/users')
+app.get('/users/:text', (req, res) => {
+    let id = req.params.text
+    res.send(id)
+})
 app.get('/edit', (req, res) => {
     title = 'Edit'
     res.render('edit', { title })
