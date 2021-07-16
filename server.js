@@ -34,6 +34,7 @@ app.get('/users', (req, res) => {
         res.json(cb)
     })
 })
+app.get('/users')
 app.get('/edit', (req, res) => {
     title = 'Edit'
     res.render('edit', { title })

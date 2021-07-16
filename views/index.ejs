@@ -44,8 +44,8 @@
                 <div class="col-md-8">
                     <div class="alert alert-danger">
                         <form action="" method="get" class="inline-group">
-                            <input type="search" name="search" spellcheck="false" id="search" placeholder="Search..."
-                                class="my-2 form-control">
+                            <input type="search" onkeyup="Search()" name="search" spellcheck="false" id="search"
+                                placeholder="Search..." class="my-2 form-control">
                         </form>
                     </div>
                     <div class="card card-body">
@@ -98,14 +98,34 @@
     </div>
     </body>
     <script>
-
-        let output = ''
-        fetch('http://localhost:7000/users')
-            .then(res => res.json().then((data) => {
-                if (data.length > 0) {
-                    data.forEach((user) => {
-                        output += `
-                        <div class="col-md-4">
+        // Select
+        // Search
+        // Event like Edit update deleteOne and deleteAll
+        function DataSearch() {
+            fetch('http://localhost:7000/users/')
+                .then(res => res.json().then((data) => {
+                    console.log(data)
+                }))
+                .catch()
+        }
+        function Search() {
+            txt = document.getElementById('search')
+            text = txt.value
+            if (text != '') {
+                DataSearch()
+            } else {
+                Select()
+            }
+        }
+        Select()
+        function Select() {
+            let output = ''
+            fetch('http://localhost:7000/users')
+                .then(res => res.json().then((data) => {
+                    if (data.length > 0) {
+                        data.forEach((user) => {
+                            output += `
+                        <div class="col-md-4 my-1">
                             <div class="card">
                                 <div class="card-header">
                                     ${user.username}
@@ -117,13 +137,14 @@
                                 </div>
                             </div>
                             `
-                    })
-                } else {
-                    output = "<p class='alert alert-danger'>There is no data registered</p>"
-                }
-                document.getElementById('result').innerHTML = output
-            }))
-            .catch(err => console.log(err))
+                        })
+                    } else {
+                        output = "<p class='alert alert-danger'>There is no data registered</p>"
+                    }
+                    document.getElementById('result').innerHTML = output
+                }))
+                .catch(err => console.log(err))
+        }
     </script>
 
     </html>
