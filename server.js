@@ -38,15 +38,20 @@ app.get('/users/:text', (req, res) => {
     let id = req.params.text
     res.send(id)
 })
-app.get('/edit', (req, res) => {
+app.get('/edit/:_id', (req, res) => {
+    let id = req.params._id
+
     title = 'Edit'
     res.render('edit', { title })
+    Student.findById(id, (err, cb) => {
+        if (err) throw err
+        res.render('edit', { cb })
+    })
 })
 
 // Add user
 app.post('/add', (req, res) => {
     const { username, fullname, email, password } = req.body
-
     if (username === undefined || username === '') { errors.push({ message: "Username is required" }) }
     if (errors.length === 0) {
         const NewStudent = new Student({
