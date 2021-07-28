@@ -34,10 +34,11 @@ app.get('/users', (req, res) => {
         res.json(cb)
     })
 })
-app.get('/users/:text', (req, res) => {
-    let id = req.params.text
-    res.send(id)
-})
+// app.get('/users/:text', (req, res) => {
+//     let id = req.params.text
+//     res.send(id)
+// })
+
 app.get('/edit/:_id', (req, res) => {
     let id = req.params._id
     title = 'Edit'
