@@ -21,6 +21,8 @@ app.use(exp.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
+// Assets
+app.use('/assets/', exp.static('public'))
 let title = 'Grace'
 const errors = []
 const Student = require('./models/Students')
@@ -42,9 +44,15 @@ app.get('/edit/', (req, res) => {
     title = 'Edit'
     res.render('edit', { title })
 })
+
+// Style
+app.get('/style', (req, res) => {
+    res.render('style')
+})
+
 app.get('/edit/:id', (req, res) => {
     let id = req.params.id
-    title = 'Edit'
+    title = 'Edit ' + id
     Student.findById(id, async (err, cb) => {
         if (err) throw err
         await res.render('edit', { title, cb })
