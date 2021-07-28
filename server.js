@@ -39,10 +39,11 @@ app.get('/users', (req, res) => {
 //     res.send(id)
 // })
 app.get('/edit/', (req, res) => {
-    res.render('edit')
+    title = 'Edit'
+    res.render('edit', { title })
 })
-app.get('/edit/:_id', (req, res) => {
-    let id = req.params._id
+app.get('/edit/:id', (req, res) => {
+    let id = req.params.id
     title = 'Edit'
     Student.findById(id, async (err, cb) => {
         if (err) throw err
