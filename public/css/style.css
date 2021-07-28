@@ -3,3 +3,36 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: #eee;
+}
+.container{
+    position: relative;
+    width: 100%;
+}
+.form{
+    position: relative;
+    margin: 10px auto;
+    background: #fff;
+    width: 320px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 5px #000;
+}
+.group{
+    display: block;
+    position: relative;
+    margin: 10px 0;
+}
+.form .input, .form label{
+    display: block;
+}
+.form label{
+    margin: 8px 0;
+}
+.input{
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    width: 100%;
+}
