@@ -38,7 +38,9 @@ app.get('/users', (req, res) => {
 //     let id = req.params.text
 //     res.send(id)
 // })
-
+app.get('/edit/', (req, res) => {
+    res.render('edit')
+})
 app.get('/edit/:_id', (req, res) => {
     let id = req.params._id
     title = 'Edit'
