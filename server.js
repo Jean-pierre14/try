@@ -40,12 +40,10 @@ app.get('/users/:text', (req, res) => {
 })
 app.get('/edit/:_id', (req, res) => {
     let id = req.params._id
-
     title = 'Edit'
-    res.render('edit', { title })
-    Student.findById(id, (err, cb) => {
+    Student.findById(id, async (err, cb) => {
         if (err) throw err
-        res.render('edit', { cb })
+        await res.render('edit', { title, cb })
     })
 })
 
