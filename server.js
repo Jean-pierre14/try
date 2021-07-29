@@ -40,18 +40,18 @@ app.get('/users', (req, res) => {
 //     let id = req.params.text
 //     res.send(id)
 // })
-app.get('/edit/', (req, res) => {
-    title = 'Edit'
-    res.render('edit', { title })
-})
+// app.get('/edit/', (req, res) => {
+//     title = 'Edit'
+//     res.render('edit', { title })
+// })
 
 // Style
 app.get('/style', (req, res) => {
     res.render('style')
 })
 
-app.get('/edit/:id', (req, res) => {
-    let id = req.params.id
+app.get('/edit/:_id', (req, res) => {
+    let id = req.params._id
     title = 'Edit ' + id
     Student.findById(id, async (err, cb) => {
         if (err) throw err
