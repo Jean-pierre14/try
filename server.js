@@ -29,6 +29,10 @@ const Student = require('./models/Students')
 
 app.get('/', (req, res) => {
     title = 'Crud using mongodb'
+    Student.find({}, (err, users)=>{
+        if(err) throw err
+        res.render('users', {title, users})
+    })
     res.render('index', { title })
 })
 app.get('/users', (req, res) => {
