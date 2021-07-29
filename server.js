@@ -28,6 +28,7 @@ const errors = []
 const Student = require('./models/Students')
 
 app.get('/', (req, res) => {
+    title = 'Crud using mongodb'
     res.render('index', { title })
 })
 app.get('/users', (req, res) => {
@@ -48,6 +49,15 @@ app.get('/users', (req, res) => {
 // Style
 app.get('/style', (req, res) => {
     res.render('style')
+})
+
+app.get('/get/:id', (req, res)=>{
+    let id = req.params.id
+    title = 'Get'
+    Student.findById(id, async (err, user) =>{
+        if(err) throw err
+        await res.render('edit', {title, user})
+    })
 })
 
 app.get('/edit/:_id', (req, res) => {
