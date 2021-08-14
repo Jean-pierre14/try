@@ -29,11 +29,11 @@ const Student = require('./models/Students')
 
 app.get('/', (req, res) => {
     title = 'Crud using mongodb'
-    Student.find({}, (err, users)=>{
-        if(err) throw err
-        res.render('users', {title, users})
+    Student.find({}, (err, users) => {
+        if (err) throw err
+        res.render('users', { title, users })
     })
-    res.render('index', { title })
+    // res.render('index', { title })
 })
 app.get('/users', (req, res) => {
     Student.find({}, (err, cb) => {
@@ -55,12 +55,12 @@ app.get('/style', (req, res) => {
     res.render('style')
 })
 
-app.get('/get/:id', (req, res)=>{
+app.get('/get/:id', (req, res) => {
     let id = req.params.id
     title = 'Get'
-    Student.findById(id, async (err, user) =>{
-        if(err) throw err
-        await res.render('edit', {title, user})
+    Student.findById(id, async (err, cb) => {
+        if (err) throw err
+        await res.render('edit', { title, cb })
     })
 })
 
