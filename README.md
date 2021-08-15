@@ -36,7 +36,6 @@ function Fetch() {
                                     </form>
                                 </div>
                             `
-
                         data.forEach(item => {
                             output += `
                             <div class="col-md-6 p-1">

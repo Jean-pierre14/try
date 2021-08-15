@@ -15,39 +15,30 @@
         <div class="container">
             <div class="mt-2 alert alert-success">
                 <h3 class="text-center">
-                    <a href="/" class="btn btn-link">Home</a>/<%= title %>
+                    <a href="/" class="btn btn-link">Home</a>/<%= user.username %>
                 </h3>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-12">
+
                     <div id="result"></div>
                     <div class="card card-body">
                         <form action="" method="post">
                             <div class="form-row">
                                 <div class="col-md-6 form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" id="username" value="" placeholder="Username"
-                                        class="form-control">
+                                    <input type="text" name="username" id="username" value="<%= user.username %>"
+                                        placeholder="Username" class="form-control">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="fullname">fullname</label>
-                                    <input type="text" name="fullname" id="fullname" value="" placeholder="fullname"
-                                        class="form-control">
+                                    <input type="text" name="fullname" id="fullname" value="<%= user.fullname %>"
+                                        placeholder="fullname" class="form-control">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" value="" placeholder="email"
-                                        class="form-control">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="pass">Password</label>
-                                    <input type="password" name="password" id="pass" value="" placeholder="Password"
-                                        class="form-control">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="pass2">Confirm Password</label>
-                                    <input type="password" name="password2" id="pass2" value="" placeholder="Password"
-                                        class="form-control">
+                                    <input type="email" name="email" id="email" value="<%= user.email %>"
+                                        placeholder="email" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">

@@ -60,30 +60,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Ghost</td>
-                                    <td>Ghost Racine sniper</td>
-                                    <td>gho@gmail.com</td>
-                                    <td>.1234</td>
-                                    <td>
-                                        <div class="btn-group btn-sm-responsive">
-                                            <a href="/edit" class="btn btn-sm btn-info">edit</a>
-                                            <a href="/delete" class="btn btn-sm btn-danger">delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Ghost&é</td>
-                                    <td> sniper</td>
-                                    <td>ghostart@gmail.com</td>
-                                    <td>.1234</td>
-                                    <td>
-                                        <div class="btn-group btn-sm-responsive">
-                                            <a href="/edit" class="btn btn-sm btn-info">edit</a>
-                                            <a href="/delete" class="btn btn-sm btn-danger">delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <% users.forEach(function(u){%>
+                                    <tr>
+                                        <td>
+                                            <%= u.username %>
+                                        </td>
+                                        <td>
+                                            <%= u.fullname %>
+                                        </td>
+                                        <td>
+                                            <%= u.email %>
+                                        </td>
+                                        <td>
+                                            <%= u.password %>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-sm-responsive">
+                                                <a href="/get/<%= u._id %>" class="btn btn-sm btn-info">edit</a>
+                                                <a href="/delete/<%= u._id %>" class="btn btn-sm btn-danger">delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+                                        <tr>
+                                            <td>Ghost&é</td>
+                                            <td> sniper</td>
+                                            <td>ghostart@gmail.com</td>
+                                            <td>.1234</td>
+                                            <td>
+                                                <div class="btn-group btn-sm-responsive">
+                                                    <a href="/edit" class="btn btn-sm btn-info">edit</a>
+                                                    <a href="/delete" class="btn btn-sm btn-danger">delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
                             </tbody>
                         </table>
                     </div>
