@@ -20,50 +20,58 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-12">
+                    <div id="result"></div>
                     <div class="card card-body">
-                        <% if(cb){%>
-                            <% cb.forEach((user)=>{%>
-                                <%= user.username %>
-                                    <% })%>
-
-                                        <%}%>
-                                            <form action="" method="post">
-                                                <div class="form-row">
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="username">Username</label>
-                                                        <input type="text" name="username" id="username" value=""
-                                                            placeholder="Username" class="form-control">
-                                                    </div>
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="fullname">fullname</label>
-                                                        <input type="text" name="fullname" id="fullname" value=""
-                                                            placeholder="fullname" class="form-control">
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label for="email">Email</label>
-                                                        <input type="email" name="email" id="email" value=""
-                                                            placeholder="email" class="form-control">
-                                                    </div>
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="pass">Password</label>
-                                                        <input type="password" name="password" id="pass" value=""
-                                                            placeholder="Password" class="form-control">
-                                                    </div>
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="pass2">Confirm Password</label>
-                                                        <input type="password" name="password2" id="pass2" value=""
-                                                            placeholder="Password" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="button" class="btn btn-sm btn-warning">Update</button>
-                                                </div>
-                                            </form>
+                        <form action="" method="post">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" value="" placeholder="Username"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="fullname">fullname</label>
+                                    <input type="text" name="fullname" id="fullname" value="" placeholder="fullname"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" value="" placeholder="email"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="pass">Password</label>
+                                    <input type="password" name="password" id="pass" value="" placeholder="Password"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="pass2">Confirm Password</label>
+                                    <input type="password" name="password2" id="pass2" value="" placeholder="Password"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-sm btn-warning">Update</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.get(`http://localhost:7000/fetch`, function (result) {
+                if (result.length != 0) {
+                    result.array.forEach(element => {
+                        console.log(element)
+                    });
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

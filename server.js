@@ -35,6 +35,9 @@ app.get('/', (req, res) => {
     })
     // res.render('index', { title })
 })
+app.get('/user', (req, res) => {
+    res.render('edit', { title })
+})
 app.get('/users', (req, res) => {
     Student.find({}, (err, cb) => {
         if (err) throw err
@@ -60,17 +63,18 @@ app.get('/get/:id', (req, res) => {
     title = 'Get'
     Student.findById(id, async (err, cb) => {
         if (err) throw err
-        await res.render('edit', { title, cb })
+        await res.json(cb)
     })
 })
 
-app.get('/edit/:_id', (req, res) => {
+app.get('/edit', (req, res) => {
     let id = req.params._id
     title = 'Edit ' + id
-    Student.findById(id, async (err, cb) => {
-        if (err) throw err
-        await res.render('edit', { title, cb })
-    })
+    res.render('edit', { title })
+    // Student.findById(id, async (err, cb) => {
+    //     if (err) throw err
+    //     await res.render('edit', { title, cb })
+    // })
 })
 
 // Add user
