@@ -38,6 +38,12 @@ app.get('/', (req, res) => {
 app.get('/user', (req, res) => {
     res.render('edit', { title })
 })
+app.get('/fetch', (req, res) => {
+    Student.find({}, (err, cb) => {
+        if (err) throw err
+        res.json(cb)
+    })
+})
 app.get('/users', (req, res) => {
     Student.find({}, (err, cb) => {
         if (err) throw err

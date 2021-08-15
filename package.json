@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Jean-pierre14/try#readme",
   "devDependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "consola": "^2.15.3",
     "cors": "^2.8.5",
