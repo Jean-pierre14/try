@@ -46,10 +46,11 @@
                 <div class="col-md-8">
                     <div class="alert alert-danger">
                         <form action="" method="get" class="inline-group">
-                            <input type="search" onkeyup="Search()" name="search" spellcheck="false" id="search"
+                            <input type="search" onkeyup="mySearch()" name="search" spellcheck="false" id="search"
                                 placeholder="Search..." class="my-2 form-control">
                         </form>
                     </div>
+                    <div id="search"></div>
                     <div class="card card-body">
                         <table class="table table-sm table-responsive-sm table-striped">
                             <thead>
@@ -94,10 +95,37 @@
         </div>
     </div>
     </body>
+    <!-- <script src="/dist/axios.min.js"></script> -->
+
     <script>
         // Select
         // Search
+        function mySearch() {
+            var text = document.getElementById('search').value
+            var txt = text.trim()
+            // alert(txt)
+            fetch(`http://localhost:7000/users/${txt}`)
+                .then(res => res.json().then(data => {
+                    var output = ''
+                    if (data.length > 0) {
+                        data.forEach((user) => {
+                            output += `
+                            <div class="card card-body shadow-sm m-1">
+                                <h3>${user.username}</h3>
+                                <h3>${user.email}</h3>
+                            </div>
+                            `
+                        })
+                    } else {
+                        output += '<p>This name is not found</p>'
+                    }
+                    console.log(output)
+                    document.getElementById('search').innerHTML = output
+                }))
+                .catch(e => console.log(e))
+        }
         // Event like Edit update deleteOne and deleteAll
+
         function DataSearch() {
             fetch('http://localhost:7000/users/')
                 .then(res => res.json().then((data) => {
