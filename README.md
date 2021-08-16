@@ -62,3 +62,54 @@ function Fetch() {
         // return console.log('Cool')
     }
 ```
+
+---
+## To Fetch users using a javascript method
+---
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/58594917?v=4" type="image/x-icon">
+    <title>Try</title>
+</head>
+
+<body>
+    <div class="row justify-content-center my-2" id="result"></div>
+    </body>
+</html>
+```
+```javascript
+function Select() {
+            let output = ''
+            fetch('http://localhost:7000/users')
+                .then(res => res.json().then((data) => {
+                    if (data.length > 0) {
+                        data.forEach((user) => {
+                            output += `
+                        <div class="col-md-4 my-1">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    ${user.username}
+                                </div>
+                                <div class="card-body">
+                                    <p><b>Email: </b> ${user.email}</p>
+                                    <a href="/get/${user._id}" class="btn btn-sm btn-warning">Ready more</a>
+                                </div>
+                                </div>
+                            </div>
+                            `
+                        })
+                    } else {
+                        output = "<p class='alert alert-danger'>There is no data registered</p>"
+                    }
+                    document.getElementById('result').innerHTML = output
+                }))
+                .catch(err => console.log(err))
+        }
+```
