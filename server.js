@@ -37,26 +37,18 @@ app.get('/', (req, res) => {
 app.get('/user', (req, res) => {
     res.render('edit', { title })
 })
-app.get('/fetch', (req, res) => {
-    Student.find({}, (err, cb) => {
+app.get('/fetch', async (req, res) => {
+    await Student.find({}, (err, cb) => {
         if (err) throw err
         res.json(cb)
     })
 })
-app.get('/users', (req, res) => {
-    Student.find({}, (err, cb) => {
+app.get('/users', async (req, res) => {
+    await Student.find({}, (err, cb) => {
         if (err) throw err
         res.json(cb)
     })
 })
-// app.get('/users/:text', (req, res) => {
-//     let id = req.params.text
-//     res.send(id)
-// })
-// app.get('/edit/', (req, res) => {
-//     title = 'Edit'
-//     res.render('edit', { title })
-// })
 
 // Style
 app.get('/style', (req, res) => {

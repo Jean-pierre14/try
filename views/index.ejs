@@ -2,7 +2,9 @@
     <div class="container-fluid p-0">
         <div class="container">
             <div class="mt-2 alert alert-success">
-                <h2 class="text-center">Crud using nodejs and express with mongodb</h2>
+                <h2 class="text-center">
+                    <%= title %>
+                </h2>
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -55,7 +57,6 @@
                                     <th>Username</th>
                                     <th>Fullname</th>
                                     <th>Email</th>
-                                    <th>Password</th>
                                     <th>Events</th>
                                 </tr>
                             </thead>
@@ -72,9 +73,6 @@
                                             <%= u.email %>
                                         </td>
                                         <td>
-                                            <%= u.password %>
-                                        </td>
-                                        <td>
                                             <div class="btn-group btn-sm-responsive">
                                                 <a href="/get/<%= u._id %>" class="btn btn-sm btn-info">edit</a>
                                                 <a href="/delete/<%= u._id %>" class="btn btn-sm btn-danger">delete</a>
@@ -82,21 +80,10 @@
                                         </td>
                                     </tr>
                                     <%})%>
-                                        <tr>
-                                            <td>Ghost&é</td>
-                                            <td> sniper</td>
-                                            <td>ghostart@gmail.com</td>
-                                            <td>.1234</td>
-                                            <td>
-                                                <div class="btn-group btn-sm-responsive">
-                                                    <a href="/edit" class="btn btn-sm btn-info">edit</a>
-                                                    <a href="/delete" class="btn btn-sm btn-danger">delete</a>
-                                                </div>
-                                            </td>
-                                        </tr>
                             </tbody>
                         </table>
                     </div>
+                    <span class="badge badge-success">Student: <%= users.length %></span>
                 </div>
             </div>
             <div class="container-fluid p-0">
