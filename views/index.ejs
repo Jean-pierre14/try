@@ -89,7 +89,7 @@
             </div>
             <div class="container-fluid p-0">
                 <div>
-                    <div class="row my-2" id="result"></div>
+                    <div class="row justify-content-center my-2" id="result"></div>
                 </div>
             </div>
         </div>
@@ -151,13 +151,13 @@
                         data.forEach((user) => {
                             output += `
                         <div class="col-md-4 my-1">
-                            <div class="card">
+                            <div class="card shadow-sm">
                                 <div class="card-header">
                                     ${user.username}
                                 </div>
                                 <div class="card-body">
                                     <p><b>Email: </b> ${user.email}</p>
-                                    <a href="edit/?${user._id}" class="btn btn-sm btn-warning">Ready more</a>
+                                    <a href="/get/${user._id}" class="btn btn-sm btn-warning">Ready more</a>
                                 </div>
                                 </div>
                             </div>
