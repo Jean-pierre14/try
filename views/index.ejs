@@ -91,15 +91,37 @@
                 <div>
                     <div class="row justify-content-center my-2" id="result"></div>
                 </div>
+                <div id="Map"></div>
             </div>
         </div>
     </div>
     </body>
     <!-- <script src="/dist/axios.min.js"></script> -->
 
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfsrBR4BN3ZknC21eDw2yrDHkJBk0gaMM&callback=initMap&libraries=&v=weekly"
+        async>
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+
+        </script>
     <script>
         // Select
         // Search
+        var KEY = "AIzaSyDfsrBR4BN3ZknC21eDw2yrDHkJBk0gaMM"
+        function Map() {
+            fethc(`https://www.google.com/maps/embed/v1/place?key=${KEY}
+    &q=Space+Needle,Seattle+WA`)
+                .then(res => {
+                    res.json().then(data => {
+                        console.log(data)
+                    })
+                })
+                .catch(e => console.log(e))
+        }
         function mySearch() {
             var text = document.getElementById('search').value
             var txt = text.trim()
