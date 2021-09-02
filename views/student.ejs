@@ -1,0 +1,197 @@
+<%- include ('./includes/header') %>
+    <div class="container-fluid p-0">
+        <div class="container">
+            <div class="mt-2 alert alert-success">
+                <h2 class="text-center">
+                    <%= title %>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-body">
+                        <form action="/add" autocomplete="off" method="post">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" value="" placeholder="Username"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="fullname">fullname</label>
+                                    <input type="text" name="fullname" id="fullname" value="" placeholder="fullname"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" value="" placeholder="email"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="pass">Password</label>
+                                    <input type="password" name="password" id="pass" value="" placeholder="Password"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="pass2">Confirm Password</label>
+                                    <input type="password" name="password2" id="pass2" value="" placeholder="Password"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-sm btn-success">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="alert alert-danger">
+                        <form action="" method="get" class="inline-group">
+                            <input type="search" onkeyup="mySearch()" name="search" spellcheck="false" id="search"
+                                placeholder="Search..." class="my-2 form-control">
+                        </form>
+                    </div>
+                    <div id="search"></div>
+                    <div class="card card-body">
+                        <table class="table table-sm table-responsive-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Fullname</th>
+                                    <th>Email</th>
+                                    <th>Events</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% users.forEach(function(u){%>
+                                    <tr>
+                                        <td>
+                                            <%= u.username %>
+                                        </td>
+                                        <td>
+                                            <%= u.fullname %>
+                                        </td>
+                                        <td>
+                                            <%= u.email %>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-sm-responsive">
+                                                <a href="/get/<%= u._id %>" class="btn btn-sm btn-info">edit</a>
+                                                <a href="/delete/<%= u._id %>" class="btn btn-sm btn-danger">delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <span class="badge badge-success">Student: <%= users.length %></span>
+                </div>
+            </div>
+            <div class="container-fluid p-0">
+                <div>
+                    <div class="row justify-content-center my-2" id="result"></div>
+                </div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <!-- <script src="/dist/axios.min.js"></script> -->
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfsrBR4BN3ZknC21eDw2yrDHkJBk0gaMM&callback=initMap&libraries=&v=weekly"
+        async>
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+
+        </script>
+    <script>
+        // Select
+        // Search
+        var KEY = "AIzaSyDfsrBR4BN3ZknC21eDw2yrDHkJBk0gaMM"
+        function Map() {
+            fethc(`https://www.google.com/maps/embed/v1/place?key=${KEY}
+    &q=Space+Needle,Seattle+WA`)
+                .then(res => {
+                    res.json().then(data => {
+                        console.log(data)
+                    })
+                })
+                .catch(e => console.log(e))
+        }
+        function mySearch() {
+            var text = document.getElementById('search').value
+            var txt = text.trim()
+            // alert(txt)
+            fetch(`http://localhost:7000/users/${txt}`)
+                .then(res => res.json().then(data => {
+                    var output = ''
+                    if (data.length > 0) {
+                        data.forEach((user) => {
+                            output += `
+                            <div class="card card-body shadow-sm m-1">
+                                <h3>${user.username}</h3>
+                                <h3>${user.email}</h3>
+                            </div>
+                            `
+                        })
+                    } else {
+                        output += '<p>This name is not found</p>'
+                    }
+                    console.log(output)
+                    document.getElementById('search').innerHTML = output
+                }))
+                .catch(e => console.log(e))
+        }
+        // Event like Edit update deleteOne and deleteAll
+
+        function DataSearch() {
+            fetch('http://localhost:7000/users/')
+                .then(res => res.json().then((data) => {
+                    console.log(data)
+                }))
+                .catch()
+        }
+        function Search() {
+            txt = document.getElementById('search')
+            text = txt.value
+            if (text != '') {
+                DataSearch()
+            } else {
+                Select()
+            }
+        }
+        Select()
+        function Select() {
+            let output = ''
+            fetch('http://localhost:7000/users')
+                .then(res => res.json().then((data) => {
+                    if (data.length > 0) {
+                        data.forEach((user) => {
+                            output += `
+                        <div class="col-md-4 my-1">
+                            <div class="card shadow-sm">
+                                <div class="card-header">
+                                    ${user.username}
+                                </div>
+                                <div class="card-body">
+                                    <p><b>Email: </b> ${user.email}</p>
+                                    <a href="/get/${user._id}" class="btn btn-sm btn-warning">Ready more</a>
+                                </div>
+                                </div>
+                            </div>
+                            `
+                        })
+                    } else {
+                        output = "<p class='alert alert-danger'>There is no data registered</p>"
+                    }
+                    document.getElementById('result').innerHTML = output
+                }))
+                .catch(err => console.log(err))
+        }
+    </script>
+
+    </html>
