@@ -6,106 +6,10 @@
                     <%= title %>
                 </h2>
             </div>
-
+            <h2 class="display-1">Student</h2>
         </div>
     </div>
     </body>
-    <!-- <script src="/dist/axios.min.js"></script> -->
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfsrBR4BN3ZknC21eDw2yrDHkJBk0gaMM&callback=initMap&libraries=&v=weekly"
-        async>
-
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8
-            });
-
-        </script>
-    <script>
-        // Select
-        // Search
-        var KEY = "AIzaSyDfsrBR4BN3ZknC21eDw2yrDHkJBk0gaMM"
-        function Map() {
-            fethc(`https://www.google.com/maps/embed/v1/place?key=${KEY}
-    &q=Space+Needle,Seattle+WA`)
-                .then(res => {
-                    res.json().then(data => {
-                        console.log(data)
-                    })
-                })
-                .catch(e => console.log(e))
-        }
-        function mySearch() {
-            var text = document.getElementById('search').value
-            var txt = text.trim()
-            // alert(txt)
-            fetch(`http://localhost:7000/users/${txt}`)
-                .then(res => res.json().then(data => {
-                    var output = ''
-                    if (data.length > 0) {
-                        data.forEach((user) => {
-                            output += `
-                            <div class="card card-body shadow-sm m-1">
-                                <h3>${user.username}</h3>
-                                <h3>${user.email}</h3>
-                            </div>
-                            `
-                        })
-                    } else {
-                        output += '<p>This name is not found</p>'
-                    }
-                    console.log(output)
-                    document.getElementById('search').innerHTML = output
-                }))
-                .catch(e => console.log(e))
-        }
-        // Event like Edit update deleteOne and deleteAll
-
-        function DataSearch() {
-            fetch('http://localhost:7000/users/')
-                .then(res => res.json().then((data) => {
-                    console.log(data)
-                }))
-                .catch()
-        }
-        function Search() {
-            txt = document.getElementById('search')
-            text = txt.value
-            if (text != '') {
-                DataSearch()
-            } else {
-                Select()
-            }
-        }
-        Select()
-        function Select() {
-            let output = ''
-            fetch('http://localhost:7000/users')
-                .then(res => res.json().then((data) => {
-                    if (data.length > 0) {
-                        data.forEach((user) => {
-                            output += `
-                        <div class="col-md-4 my-1">
-                            <div class="card shadow-sm">
-                                <div class="card-header">
-                                    ${user.username}
-                                </div>
-                                <div class="card-body">
-                                    <p><b>Email: </b> ${user.email}</p>
-                                    <a href="/get/${user._id}" class="btn btn-sm btn-warning">Ready more</a>
-                                </div>
-                                </div>
-                            </div>
-                            `
-                        })
-                    } else {
-                        output = "<p class='alert alert-danger'>There is no data registered</p>"
-                    }
-                    document.getElementById('result').innerHTML = output
-                }))
-                .catch(err => console.log(err))
-        }
-    </script>
 
     </html>

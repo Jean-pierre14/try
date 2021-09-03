@@ -8,7 +8,7 @@ const exp = require('express'),
 
 dotenv.config({ path: 'config.env' })
 const PORT = process.env.PORT || 5000
-const DB = process.env.DB
+const DB = process.env.DB || "localhost:27167/mongodb/"
 // const db = require('./models/key').MongoURI
 // Database connection
 mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -23,12 +23,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 // Assets
 app.use('/assets/', exp.static('public'))
-let title = 'Grace'
+let title = 'Mr. BISIMWA'
 const errors = []
 const Student = require('./models/Students')
 
 app.get('/', (req, res) => {
-    title = 'Crud using mongodb'
+
     Student.find({}, async (err, users) => {
         if (err) throw err
         await res.render('index', { title, users })
