@@ -11,4 +11,8 @@ router.get('/', (req, res) => {
         await res.render('student', { title, users })
     })
 })
+
+router.get('/register', (req, res) => {
+    res.render('register', { title })
+})
 module.exports = router

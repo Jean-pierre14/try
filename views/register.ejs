@@ -13,10 +13,16 @@
                             <input type="search" placeholder="Search..." name="search" id="search" class="form-control">
                         </form>
                         <%- include('./includes/menu') %>
-
                     </div>
                     <div class="col-md-8">
-                        <%- include('./includes/registration) %>
+                        <div class="card">
+                            <div class="card-body">
+                                <%- include('./includes/registration') %>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/student" class="close">Back</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
