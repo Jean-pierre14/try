@@ -28,12 +28,13 @@ const errors = []
 const Student = require('./models/Students')
 
 app.get('/', (req, res) => {
-
     Student.find({}, async (err, users) => {
         if (err) throw err
         await res.render('index', { title, users })
     })
 })
+
+app.use('/student', require('./routers/'))
 app.get('/user', (req, res) => {
     res.render('edit', { title })
 })

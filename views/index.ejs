@@ -12,23 +12,10 @@
                         <form action="" method="get">
                             <input type="search" placeholder="Search..." name="search" id="search" class="form-control">
                         </form>
-                        <ul class="list-group my-3">
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/">Student Events</a>
-                            </li>
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/">MarkSheet</a>
-                            </li>
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/">Attendance</a>
-                            </li>
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/">Register</a>
-                            </li>
-                        </ul>
-                        <div class="divPlus">
-                            <a href="/addEvent" class="btn btn-link link add-button">Plus</a>
-                        </div>
+                        <%- include('./includes/menu') %>
+                            <div class="divPlus">
+                                <a href="/addEvent" class="btn btn-link close link add-button">Plus</a>
+                            </div>
                     </div>
                     <div class="col-md-8">
                         <h3>Data</h3>
