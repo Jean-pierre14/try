@@ -14,50 +14,57 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="alert alert-danger">
-                                    <form action="" method="get" class="inline-group">
-                                        <input type="search" onkeyup="mySearch()" name="search" spellcheck="false"
-                                            id="search" placeholder="Search..." class="my-2 form-control">
-                                    </form>
-                                </div>
-                                <div id="search"></div>
-                                <div class="card card-body">
-                                    <a href="/student/register" class="btn my-2 btn-sm btn-success">Register</a>
-                                    <table class="table table-sm table-responsive-sm table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Username</th>
-                                                <th>Fullname</th>
-                                                <th>Email</th>
-                                                <th>Events</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% users.forEach(function(u){%>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <form action="" method="get" class="inline-group">
+                                            <input type="search" onkeyup="mySearch()" name="search" spellcheck="false"
+                                                id="search" placeholder="Search..." class="my-2 form-control">
+                                        </form>
+
+                                    </div>
+
+                                    <div class="card-body">
+                                        <a href="/student/register" class="btn btn-sm btn-success">Register</a>
+                                        <table class="table table-sm table-responsive-sm table-striped">
+                                            <thead>
                                                 <tr>
-                                                    <td>
-                                                        <%= u.username %>
-                                                    </td>
-                                                    <td>
-                                                        <%= u.fullname %>
-                                                    </td>
-                                                    <td>
-                                                        <%= u.email %>
-                                                    </td>
-                                                    <td>
-                                                        <div class="btn-group btn-sm-responsive">
-                                                            <a href="/get/<%= u._id %>"
-                                                                class="btn btn-sm btn-info">edit</a>
-                                                            <a href="/delete/<%= u._id %>"
-                                                                class="btn btn-sm btn-danger">delete</a>
-                                                        </div>
-                                                    </td>
+                                                    <th>Username</th>
+                                                    <th>Fullname</th>
+                                                    <th>Email</th>
+                                                    <th>Events</th>
                                                 </tr>
-                                                <%})%>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                <% users.forEach(function(u){%>
+                                                    <tr>
+                                                        <td>
+                                                            <%= u.username %>
+                                                        </td>
+                                                        <td>
+                                                            <%= u.fullname %>
+                                                        </td>
+                                                        <td>
+                                                            <%= u.email %>
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group btn-sm-responsive">
+                                                                <a href="/get/<%= u._id %>"
+                                                                    class="btn btn-sm btn-info">edit</a>
+                                                                <a href="/delete/<%= u._id %>"
+                                                                    class="btn btn-sm btn-danger">delete</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <%})%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="badge badge-success">Student: <%= users.length %></span>
+                                    </div>
                                 </div>
-                                <span class="badge badge-success">Student: <%= users.length %></span>
+
                             </div>
                         </div>
                     </div>
