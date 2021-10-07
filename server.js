@@ -87,12 +87,10 @@ app.get('/edit', (req, res) => {
 
 // Add user
 app.post('/add', (req, res) => {
-    const { username, fullname, email, password } = req.body
+    const { username, fullname, email, class, password } = req.body
     if (username === undefined || username === '') { errors.push({ message: "Username is required" }) }
     if (errors.length === 0) {
-        const NewStudent = new Student({
-            username, fullname, email, password
-        })
+        const NewStudent = new Student({ username, fullname, email, class, password })
         NewStudent.save()
             .then(student => {
                 res.redirect('/')
