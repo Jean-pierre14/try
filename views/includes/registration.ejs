@@ -1,12 +1,24 @@
 <form action="/add" autocomplete="off" method="post">
     <div class="form-row">
-        <div class="col-md-6 form-group">
+        <div class="col-md-4 form-group">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" value="" placeholder="Username" class="form-control">
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-4 form-group">
             <label for="fullname">fullname</label>
             <input type="text" name="fullname" id="fullname" value="" placeholder="fullname" class="form-control">
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="class">class</label>
+            <select name="class" id="class" class="form-control">
+                <option value="">-- Select --</option>
+                <option value="P1">1<sup>er</sup>Primaire</option>
+                <option value="P2">2<sup>e</sup>Primaire</option>
+                <option value="P3">3<sup>e</sup>Primaire</option>
+                <option value="P4">4<sup>e</sup>Primaire</option>
+                <option value="P5">5<sup>e</sup>Primaire</option>
+                <option value="P6">6<sup>e</sup>Primaire</option>
+            </select>
         </div>
         <div class="col-md-12 form-group">
             <label for="email">Email</label>
