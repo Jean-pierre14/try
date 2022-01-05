@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="./public/js/main.js"></script>
 </head>
 
 <body>
-    <h3>Fetch API</h3>
-    <div id="results"></div>
+    <div class="container">
+        <h3>Fetch API</h3>
+        <div id="results"></div>
+    </div>
 </body>
 <script>
-    getFile("demo.txt")
+    getFile("./demo.txt")
     async function getFile(file) {
         let O = await fetch(file)
         let Text = await O.text()
