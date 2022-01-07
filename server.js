@@ -15,6 +15,7 @@ const DB = process.env.DB || "localhost:27167/mongodb/";
 mongoose
   .connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
+    console.log("Connected to the DB mongo");
     success({ message: `Connected to the database mongodb`, badge: true });
   })
   .catch((err) => {
@@ -34,6 +35,7 @@ const errors = [];
 const Student = require("./models/Students");
 
 app.get("/", (req, res) => {
+  let title = "Mr. Bisimwa";
   Student.find({}, async (err, users) => {
     if (err) throw err;
     await res.render("index", { title, users });
@@ -44,12 +46,14 @@ app.use("/student", require("./routers/"));
 app.get("/user", (req, res) => {
   res.render("edit", { title });
 });
+
 app.get("/fetch", async (req, res) => {
   await Student.find({}, (err, cb) => {
     if (err) throw err;
     res.json(cb);
   });
 });
+
 app.get("/users", async (req, res) => {
   await Student.find({}, (err, cb) => {
     if (err) throw err;
