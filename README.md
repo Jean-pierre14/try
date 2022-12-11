@@ -11,18 +11,20 @@
 [Bootstrap]("https://www.npmjs.com/bootstrap", "For the user interface you're seen")
 
 ```javascript
-const exp = require("expresss");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import Users from "./routers/User.js";
+import dotenv from "dotenv";
+import cors from "cors";
 
-app.use(cors());
-const app = exp();
-const PORT = process.env.PORT || 3004;
+dotenv.config({ path: "./config.env" });
 
-app.use("/", require("./router/"));
-app.listen(PORT, (e) => {
-  if (e) throw e;
-  console.log(`Server run on PORT ${PORT}`);
-});
+const app = express();
+
+const PORT = process.env.PORT || 7000;
+
+const DB = process.env.DB;
 ```
 
 ---
