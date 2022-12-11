@@ -43,9 +43,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/student", require("./routers/"));
-app.get("/user", (req, res) => {
-  res.render("edit", { title });
-});
 
 app.get("/fetch", async (req, res) => {
   await Student.find({}, (err, cb) => {
@@ -54,21 +51,7 @@ app.get("/fetch", async (req, res) => {
   });
 });
 
-app.get("/users", async (req, res) => {
-  await Student.find({}, (err, cb) => {
-    if (err) throw err;
-    res.json(cb);
-  });
-});
-
-// Search
-app.get("/users/:name", async (req, res) => {
-  let name = req.params.name;
-  await Student.find({ fullname: name }, (err, docs) => {
-    if (err) throw err;
-    res.json(docs);
-  });
-});
+app.use("/users", require("./controllers/users"));
 
 // Style
 app.get("/style", (req, res) => {
