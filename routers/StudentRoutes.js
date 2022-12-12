@@ -11,8 +11,8 @@ import {
 
 const router = exp.Router();
 
-router.route("/").get(getUsers).post(postUser).delete(deleteUsers);
-
+router.route("/").get(getUsers).delete(deleteUsers);
+router.post("/createStudent", postUser);
 router.route("/:id").get(getUser).put(updateUser).delete(DeleteOneUser);
 
 export default router;

@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import Users from "./routers/User.js";
+import Student from "./routers/StudentRoutes.js";
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Code from /users api" });
 });
 
-app.use("/students", Users);
+app.use("/students", Student);
 
 mongoose
   .connect(DB, {
@@ -31,7 +31,6 @@ mongoose
   })
   .then(() => console.log(`Connected to mongoose`))
   .catch((err) => console.log(`Connection failed ${err.message}`));
-app.use("/users", Users);
 
 app.listen(PORT, (err) => {
   if (err) throw err.message;

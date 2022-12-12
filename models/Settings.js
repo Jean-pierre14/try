@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const SettingSchema = mongoose.Schema({
-  phone: {
+  phones: {
     type: Array,
     required: false,
   },

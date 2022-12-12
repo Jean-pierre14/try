@@ -38,17 +38,30 @@ export const updateUser = async (req, res) => {
   );
 };
 
-export const DeleteOneUser = (req, res) => {
-  res.json("DeleteOneUser");
+export const DeleteOneUser = async (req, res) => {
+  const Id = req.params.id;
+
+  await Student.findByIdAndDelete({ _id: Id }, (err) => {
+    if (err) throw err.message;
+    res.json({ data: "Deleted" });
+  });
 };
 
-export const postUser = (req, res) => {
-  const { username } = req.body;
+export const postUser = async (req, res) => {
+  const { username, fullname, classe, email, annee } = req.body;
+  let errors = [];
 
-  if (!username || username === "undifined" || username === "") {
-    error.push("Username is empty");
+  if (!username || !fullname || !classe || !annee || !email) {
+    errors.push({ msg: "Fields are empty" });
+  }
+
+  if (errors.length > 0) {
+    res.json(errors);
+  } else {
+    res.json("Coorect datas");
   }
 };
+
 export const deleteUsers = (req, res) => {
   res.json("deleteUsers");
 };
