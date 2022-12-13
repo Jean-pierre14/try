@@ -34,5 +34,6 @@ mongoose
 
 app.listen(PORT, (err) => {
   if (err) throw err.message;
+
   console.log(`Server run on port: ${PORT}`);
 });
