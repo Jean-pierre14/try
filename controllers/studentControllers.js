@@ -14,6 +14,7 @@ export const searchUser = async (req, res) => {
     res.json(docs);
   });
 };
+
 export const getUser = async (req, res) => {
   let Id = req.params.id;
   await Student.findById({ _id: Id }, (err, docs) => {
@@ -58,7 +59,18 @@ export const postUser = async (req, res) => {
   if (errors.length > 0) {
     res.json(errors);
   } else {
-    res.json("Coorect datas");
+    const NewStudent = new Student({
+      username,
+      fullname,
+      classe,
+      annee,
+      email,
+    });
+    NewStudent.save()
+      .then(() => {
+        res.status(200).json("success");
+      })
+      .catch((err) => console.log(err.message));
   }
 };
 

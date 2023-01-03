@@ -24,6 +24,11 @@ mongoose
 
 // Cors
 app.use(cors());
+
+/**
+ * Body parsing data to the serve
+ */
+
 app.use(exp.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -92,7 +97,7 @@ app.post("/add", (req, res) => {
       password,
     });
     NewStudent.save()
-      .then((student) => {
+      .then(() => {
         res.redirect("/");
       })
       .catch((err) => console.log(err));
