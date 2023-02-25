@@ -6,9 +6,11 @@ const exp = require("express"),
   { success, error } = require("consola"),
   app = exp();
 
-dotenv.config({ path: "config.env" });
+dotenv.config({ path: "/.env" });
+console.log("Dotenv data: " + dotenv);
+
 const PORT = process.env.PORT || 5000;
-const DB = process.env.DB || "localhost:27167/mongodb/";
+const DB = process.env.DB;
 
 // const db = require('./models/key').MongoURI
 // Database connection
@@ -39,7 +41,7 @@ let title = "Mr. BISIMWA";
 const errors = [];
 const Student = require("./models/Students");
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   let title = "Mr. Bisimwa";
   Student.find({}, async (err, users) => {
     if (err) throw err;

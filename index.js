@@ -5,7 +5,7 @@ import Student from "./routers/StudentRoutes.js";
 import dotenv from "dotenv";
 import cors from "cors";
 
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: ".env" });
 
 const app = express();
 

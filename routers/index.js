@@ -5,10 +5,10 @@ const title = "Mr. BISIMWA";
 
 const Student = require("../models/Students");
 
-router.get("/", (req, res) => {
-  Student.find({}, async (err, users) => {
-    if (err) throw err;
-    await res.render("student", { title, users });
+router.get("/", async (req, res) => {
+  await Student.find({}, (err, docs) => {
+    if (err) throw err.message;
+    res.status(200).json(docs);
   });
 });
 
