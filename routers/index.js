@@ -1,9 +1,7 @@
-const exp = require("express");
-
-const router = exp.Router();
-const title = "Mr. BISIMWA";
-
-const Student = require("../models/Students");
+const exp = require("express"),
+  router = exp.Router(),
+  title = "Mr. BISIMWA",
+  Student = require("../models/Students");
 
 router.get("/", async (req, res) => {
   await Student.find({}, (err, docs) => {
@@ -15,4 +13,5 @@ router.get("/", async (req, res) => {
 router.get("/register", (req, res) => {
   res.render("register", { title });
 });
+
 module.exports = router;

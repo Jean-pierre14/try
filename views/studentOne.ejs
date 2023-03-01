@@ -1,0 +1,23 @@
+<%- include ("./includes/header")%>
+
+<div class="container">
+  <div class="row py-5 justify-content-center">
+    <div class="col-md-6">
+      <div class="card card-body">
+        <p class="d-flex justify-content-between align-item-center">
+          <span>Prenom:</span>
+          <span><%= docs.username%></span>
+        </p>
+        <p class="d-flex justify-content-between align-item-center">
+          <span>Nom:</span>
+          <span><%= docs.fullname%></span>
+        </p>
+        <p class="d-flex justify-content-between align-item-center">
+          <span>Prenom:</span>
+          <span><%= docs.email%></span>
+        </p>
+        <a href="/" class="btn btn-sm btn-primary">Retour</a>
+      </div>
+    </div>
+  </div>
+</div>

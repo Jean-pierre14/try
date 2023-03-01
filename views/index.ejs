@@ -1,33 +1,38 @@
-<%- include ('./includes/header') %>
-    <div class="container-fluid p-0">
-        <div class="container">
-            <div class="mt-2 alert alert-success">
-                <h2 class="text-center">
-                    <%= title %>
-                </h2>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <form action="" method="get">
-                            <input type="search" placeholder="Search..." name="search" id="search" class="form-control">
-                        </form>
-                        <%- include('./includes/menu') %>
-                            <div class="divPlus">
-                                <a href="/addEvent" class="btn btn-link close link add-button">Plus</a>
-                            </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h3>Data</h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio neque blanditiis animi sit praesentium laudantium cum expedita ipsam quidem perferendis quia vitae voluptatibus dolore et tenetur autem excepturi, non eaque error doloremque. Aperiam debitis dignissimos velit ipsum obcaecati eos adipisci magnam, aut neque praesentium delectus saepe, cupiditate ex ipsam atque necessitatibus provident reprehenderit dolore laudantium, soluta facilis. Voluptatem incidunt odit esse velit libero sunt dolorum dolore praesentium quam suscipit saepe, veritatis repudiandae harum. Assumenda, cum impedit alias ut, perspiciatis asperiores ea fugit nesciunt expedita debitis odio fugiat dignissimos ipsum obcaecati molestias repudiandae nostrum quisquam accusantium quam eligendi. Quae soluta placeat quas delectus aspernatur veritatis voluptas quis iste, obcaecati ut nisi deleniti! Asperiores facilis, eaque dolores iure porro accusantium quo vel, eum reiciendis molestias a expedita repellendus corrupti error dolorem magni eius quae quibusdam soluta. Maxime totam, odit, expedita tempora sequi eaque similique quis iure reprehenderit accusamus unde saepe eveniet a nemo? Veniam commodi dolores provident illum beatae dolor consectetur, quae cum, delectus excepturi laudantium voluptate deleniti dolorem perspiciatis, incidunt modi. Eaque id illum obcaecati ipsa deleniti corporis eos animi voluptates corrupti placeat mollitia veritatis repellat quisquam voluptatibus, alias esse ratione rerum eveniet tempora in. Eaque fugit commodi praesentium cupiditate quis.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%- include ("./includes/header")%>
+
+<div class="container">
+  <div class="row py-5">
+    <div class="col-md-4 sidebar">
+      <div class="list-group">
+        <div class="list-group-item d-flex align-items-center">Dashboard</div>
+      </div>
     </div>
-    </body>
+    <div class="col-md-8 sidebar">
+      <div id="results">Loading...</div>
+    </div>
+  </div>
+</div>
 
-
-    </html>
+<script>
+  fetch("http://localhost:7000/students")
+    .then((res) =>
+      res.json().then((data) => {
+        data.forEach((student) => {
+          document.getElementById(
+            "results"
+          ).innerHTML += `<div class="card card-body my-1 shadow-sm">
+                  <a href="students/${student._id}" class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <span>${student.username}</span> |
+                      <span>${student.fullname}</span>
+                    </div>
+                    <div>
+                      <a href="students/${student._id}" class="btn btn-sm btn-info">views more</a>
+                    </div>
+                  </a>
+            </div>`;
+        });
+      })
+    )
+    .catch((err) => console.log(err));
+</script>

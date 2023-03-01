@@ -1,16 +1,16 @@
-# Simple project
+# Full stack project CRUD and graph using html with CSS valina
 
 ### This project is made or created to learn design using CSS and something about nodejs, javascript fetch method and mongodb
 
 [x] [Ejs]("https://www.npmjs.com/ejs", "For the user interface you're seen")
 [x] [HTML]("https://www.npmjs.com/ejs", "For the user interface you're seen")
 [x] [CSS]("https://www.npmjs.com/ejs", "For the user interface you're seen")
-[x][javascript]("https://www.npmjs.com/express", "For the user interface you're seen")
-[x][axios]("https://www.npmjs.com/express", "For the user interface you're seen")
+[x] [javascript]("https://www.npmjs.com/express", "For the user interface you're seen")
+[x] [axios]("https://www.npmjs.com/express", "For the user interface you're seen")
 [Express]("https://www.npmjs.com/express", "For the user interface you're seen")
 [Bootstrap]("https://www.npmjs.com/bootstrap", "For the user interface you're seen")
 
-```javascript
+```ts
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
@@ -29,11 +29,11 @@ const DB = process.env.DB;
 
 ---
 
-[Javascript]("w3schools.com", "Javascript")
+# For [Javascript]("w3schools.com", "Javascript") click here
 
 # To Fetch data using Javascript
 
-```javascript
+```ts
 function Fetch() {
   await fetch("http://localhost:7000/fetch")
     .then((res) => {
@@ -44,7 +44,10 @@ function Fetch() {
                             <div class="row">
                                 <div class="col-md-12">
                                     <form>
-                                        <input type="text" class="form-control" name="search" id="search" placeholder="Search..."/>
+                                        <input 
+                                        type="text"
+                                        class="form-control" 
+                                        name="search" id="search" placeholder="Search..."/>
                                     </form>
                                 </div>
                             `;
@@ -138,3 +141,7 @@ function Select() {
     .catch((err) => console.log(err));
 }
 ```
+
+# Thank you... If you find an error please tell me
+
+## Issues

@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import Student from "./routers/StudentRoutes.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import clients from "./routers/clients.js";
 
 dotenv.config({ path: ".env" });
 
@@ -13,16 +14,6 @@ const PORT = process.env.PORT || 7000;
 
 const DB = process.env.DB;
 
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.json());
-
-app.get("/", (req, res) => {
-  res.json({ message: "Code from /users api" });
-});
-
-app.use("/students", Student);
-
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
@@ -31,6 +22,22 @@ mongoose
   })
   .then(() => console.log(`Connected to mongoose`))
   .catch((err) => console.log(`Connection failed ${err.message}`));
+
+app.use(cors());
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use("/", clients);
+
+app.use("/students", Student);
+
+app.set("view engine", "ejs");
 
 app.listen(PORT, (err) => {
   if (err) throw err.message;

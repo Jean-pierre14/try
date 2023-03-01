@@ -19,7 +19,8 @@ export const getUser = async (req, res) => {
   let Id = req.params.id;
   await Student.findById({ _id: Id }, (err, docs) => {
     if (err) throw err;
-    res.json(docs);
+    // res.json(docs);
+    res.render("studentOne", { docs });
   });
 };
 
