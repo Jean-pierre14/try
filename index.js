@@ -39,8 +39,12 @@ app.use("/students", Student);
 
 app.set("view engine", "ejs");
 
-app.listen(PORT, (err) => {
-  if (err) throw err.message;
+const Server = () => {
+  app.listen(PORT, (err) => {
+    if (err) throw err.message;
 
-  console.log(`Server run on port: ${PORT}`);
-});
+    console.log(`Server run on port: ${PORT}`);
+  });
+};
+
+Server();
