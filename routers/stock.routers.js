@@ -1,7 +1,7 @@
 import exp from "express";
 import {
-  PostOne,
-  PutOne,
+  postOne,
+  putOne,
   deleteOne,
   getAll,
   getOne,
@@ -9,8 +9,8 @@ import {
 
 const router = exp.Router();
 
-router.route("/").get(getAll).post(PostOne);
+router.route("/").get(getAll).post(postOne);
 
-router.route("/:id").get(getOne).put(PutOne).delete(deleteOne);
+router.route("/:id").get(getOne).put(putOne).delete(deleteOne);
 
 export default router;

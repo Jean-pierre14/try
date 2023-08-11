@@ -28,14 +28,34 @@ export const getOne = async (req, res) => {
 };
 
 export const postOne = async (req, res) => {
+  const { name } = req.body;
+
   try {
+    // Check if a stock with the same name already exists
+    let existingStock = await Stock.findOne({ name });
+
+    if (existingStock) {
+      return res
+        .status(409)
+        .json({ message: "Stock with the same name already exists" });
+    }
+
+    // No existing stock with the same name, proceed with validation and creation/update
     const newStock = new Stock(req.body);
+    const validationError = newStock.validateSync();
+
+    if (validationError) {
+      return res
+        .status(400)
+        .json({ message: "Validation error", error: validationError.errors });
+    }
+
     await newStock.save();
     res.status(201).json(newStock);
   } catch (error) {
     res
-      .status(400)
-      .json({ message: "Error creating stock", error: error.message });
+      .status(500)
+      .json({ message: "Error creating/updating stock", error: error.message });
   }
 };
 
