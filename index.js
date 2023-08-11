@@ -40,7 +40,7 @@ app.use("/students", Student);
 
 app.use("/stock", stockRouter);
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 const Server = () => {
   app.listen(PORT, (err) => {
