@@ -1,5 +1,8 @@
-export const getAll = (req, res) => {
-  res.json("Get All");
+import Stock from "../models/stock.model.js";
+
+export const getAll = async (req, res) => {
+  const results = await Stock.find();
+  res.json(results);
 };
 export const getOne = (req, res) => {
   res.json("Get One");
