@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import Student from "./routers/StudentRoutes.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import clients from "./routers/clients.js";
 import stockRouter from "./routers/stock.routers.js";
 
 dotenv.config({ path: ".env" });
@@ -34,8 +33,9 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/", clients);
-
+app.get("/", (req, res) => {
+  res.json("Welcome to the APIs: /students and /stock");
+});
 app.use("/students", Student);
 
 app.use("/stock", stockRouter);
